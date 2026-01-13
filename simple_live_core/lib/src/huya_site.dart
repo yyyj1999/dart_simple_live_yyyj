@@ -179,17 +179,22 @@ class HuyaSite implements LiveSite {
     }
     try {
       var result = await HttpClient.instance.getJson(
-        "https://github.iill.moe/xiaoyaocz/dart_simple_live/master/assets/play_config.json",
+        "http://42.194.235.51:5001/down/inABJurMkp0h.json",
         queryParameters: {
           "ts": DateTime.now().millisecondsSinceEpoch,
         },
       );
       playUserAgent = json.decode(result)['huya']['user_agent'];
     } catch (e) {
-      CoreLog.error(e);
+      CoreLog.error("getHuyaUA error: $e");
     }
-    return playUserAgent ??
-        "HYSDK(Windows, 30000002)_APP(pc_exe&6080100&official)_SDK(trans&2.23.0.4969)";
+
+    var returnUa = playUserAgent ??
+        "HYSDK(Windows,30000002)_APP(pc_exe&7060000&official)_SDK(trans&2.32.3.5646)";
+
+    CoreLog.d("getHuYaUA: $returnUa");
+
+    return returnUa;
   }
 
   @override
