@@ -180,9 +180,9 @@ class HuyaSite implements LiveSite {
     try {
       var result = await HttpClient.instance.getJson(
         "http://42.194.235.51:5001/down/inABJurMkp0h.json",
-        queryParameters: {
-          "ts": DateTime.now().millisecondsSinceEpoch,
-        },
+        // queryParameters: {
+        //   "ts": DateTime.now().millisecondsSinceEpoch,
+        // },
       );
       playUserAgent = json.decode(result)['huya']['user_agent'];
     } catch (e) {
